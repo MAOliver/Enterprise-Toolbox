@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<parameters>
+  <parameter name="DebugFlag" description="The compilation debug='...' flag that controls things like minification and custom errors being visable. " defaultValue="true" tags="flags">
+    <parameterEntry kind="XmlFile" scope="obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/system.web/compilation/@debug" />
+  </parameter>
+  <parameter name="customErrors" description="Turn customerrors Off, On, or RemoteOnly" defaultValue="Off" tags="flags">
+    <parameterEntry kind="XmlFile" scope="obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/system.web/customErrors/@mode" />
+  </parameter>
+  <parameter name="authority.uri" description="Set the baseuri used to know where the authentication authority is" defaultValue="https://localhost/auth" tags="override">
+    <parameterEntry kind="XmlFile" scope="obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='authority.uri']/@value" />
+  </parameter>
+  <parameter name="authority.certificate.subject" description="Set the auth cert subject to search for during startup" defaultValue="CN=localhost" tags="override">
+    <parameterEntry kind="XmlFile" scope="obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='authority.certificate.subject']/@value" />
+  </parameter>
+  <parameter name="authority.certificate.password" description="Set the auth cert password for the pfx in the cert store" defaultValue="password" tags="override">
+    <parameterEntry kind="XmlFile" scope="obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='authority.certificate.password']/@value" />
+  </parameter>
+  <parameter name="ignoreSSL" description="Override the ssl callback to allow to work with invalid SSL certs" defaultValue="false" tags="override">
+    <parameterEntry kind="XmlFile" scope="obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/appSettings/add[@key='ignoreSSL']/@value" />
+  </parameter>
+</parameters>
