@@ -4,7 +4,7 @@ namespace Identity.Core.Entities
 {
     public class ApplicationRoleStore : RoleStore<ApplicationRole>
     {
-        public ApplicationRoleStore( IdentityContext ctx )
+        public ApplicationRoleStore(MembershipContext ctx )
             : base( ctx )
         {
         }

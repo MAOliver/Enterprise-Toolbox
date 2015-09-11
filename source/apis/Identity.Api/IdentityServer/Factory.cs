@@ -1,4 +1,5 @@
 ﻿using Identity.Core;
+using Identity.Core.Services;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.EntityFramework;
 

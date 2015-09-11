@@ -1,7 +1,7 @@
 ﻿using Identity.Core.Entities;
 using IdentityServer3.AspNetIdentity;
 
-namespace Identity.Core
+namespace Identity.Core.Services
 {
     public class ApplicationUserService : AspNetIdentityUserService<ApplicationUser, string>
     {
