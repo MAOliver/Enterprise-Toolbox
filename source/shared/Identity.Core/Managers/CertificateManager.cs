@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -18,7 +16,13 @@ namespace Identity.Core.Managers
 
         public X509Certificate2 GetTestCert()
         {
-            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "IISAuthCert.pfx");
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            if (!path.Contains("bin"))
+            {
+                path = Path.Combine(path, "bin");
+            }
+            path = Path.Combine(path, "IISAuthCert.pfx");
+            
             Log.Information(path);
             return new X509Certificate2(path, "11553322");
         }
