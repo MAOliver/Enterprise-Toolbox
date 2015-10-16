@@ -11,6 +11,20 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Api", "source\ap
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5C1DD666-C8E5-4940-B4E2-B98D4E74B825}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{674B7900-0408-4476-82B6-F87FECF3C00B}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\ps\addnewcert.ps1 = scripts\ps\addnewcert.ps1
+		scripts\ps\AddNewCertToLocal.ps1 = scripts\ps\AddNewCertToLocal.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{20BCCFA4-92F3-4EBF-90F6-691640697C62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAndMembership.SelfHost", "source\hosts\IdentityAndMembership.SelfHost\IdentityAndMembership.SelfHost.csproj", "{2A666210-08C0-48C2-BB17-6466134DAA02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{04B8EC85-7860-440B-9096-AAA717D8EA1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Tests.xUnit", "source\tests\Identity.Tests.xUnit\Identity.Tests.xUnit.csproj", "{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,11 +43,21 @@ Global
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C4CB4105-724F-4A85-9445-FF1C253E44BD} = {5C1DD666-C8E5-4940-B4E2-B98D4E74B825}
+		{2A666210-08C0-48C2-BB17-6466134DAA02} = {20BCCFA4-92F3-4EBF-90F6-691640697C62}
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF} = {04B8EC85-7860-440B-9096-AAA717D8EA1F}
 	EndGlobalSection
 EndGlobal

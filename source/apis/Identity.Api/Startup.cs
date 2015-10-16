@@ -1,17 +1,17 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityApi.Configuration;
-using IdentityApi.IdentityServer;
-using IdentityModel;
+﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using Auth.Api;
+using Auth.Api.Configuration;
+using Auth.Api.IdentityServer;
+using Identity.Core.Managers;
 using IdentityServer3.Core.Configuration;
 using Microsoft.Owin;
 using Owin;
 using Serilog;
 
-[assembly: OwinStartup(typeof(IdentityApi.Startup))]
+[assembly: OwinStartup(typeof(Startup))]
 
-namespace IdentityApi
+namespace Auth.Api
 {
     public class Startup
     {
@@ -22,12 +22,16 @@ namespace IdentityApi
                     .WriteTo.RollingFile(pathFormat: @"c:\logs\IdSvr-{Date}.log")
                     .CreateLogger();
 
+
+
             app.Map("/ids", idsrvApp =>
             {
                 var idsOpts = new IdentityServerOptions
                 {
-                    SiteName = "Fortegra IdentityServer",
-                    SigningCertificate = X509.LocalMachine.My.SubjectDistinguishedName.Find(GlobalConfiguration.AuthorityCertificateSubject).First(),//CertificateLocator.Get(),
+                    SiteName = "IdentityServer",
+                    SigningCertificate = !GlobalConfiguration.IgnoreSsl.GetValueOrDefault() 
+                        ? new CertificateManager().GetCert(GlobalConfiguration.AuthorityCertificateThumbprint) 
+                        : new CertificateManager().GetTestCert(),//CertificateLocator.Get(),
                     Factory = Factory.Configure("IdSvr3Config"),
                     Endpoints = new EndpointOptions
                     {
@@ -51,4 +55,5 @@ namespace IdentityApi
             });
         }
     }
+
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Identity.Core;
-using Identity.Core.Entities;
+﻿using Identity.Core;
+using Identity.Core.Managers;
+using Identity.Core.Stores;
 using IdentityManager;
 using IdentityManager.Configuration;
 

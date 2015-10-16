@@ -8,7 +8,7 @@ namespace Membership.Api.Migrations.MembershipConfiguration
         public override void Up()
         {
             CreateTable(
-                "membership.AspNetRoles",
+                "dbo.AspNetRoles",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -18,20 +18,20 @@ namespace Membership.Api.Migrations.MembershipConfiguration
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "membership.AspNetUserRoles",
+                "dbo.AspNetUserRoles",
                 c => new
                     {
                         UserId = c.String(nullable: false, maxLength: 128),
                         RoleId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("membership.AspNetRoles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("membership.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
             CreateTable(
-                "membership.AspNetUsers",
+                "dbo.AspNetUsers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
@@ -51,7 +51,7 @@ namespace Membership.Api.Migrations.MembershipConfiguration
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
             
             CreateTable(
-                "membership.AspNetUserClaims",
+                "dbo.AspNetUserClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -60,11 +60,11 @@ namespace Membership.Api.Migrations.MembershipConfiguration
                         ClaimValue = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("membership.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
             CreateTable(
-                "membership.AspNetUserLogins",
+                "dbo.AspNetUserLogins",
                 c => new
                     {
                         LoginProvider = c.String(nullable: false, maxLength: 128),
@@ -72,28 +72,28 @@ namespace Membership.Api.Migrations.MembershipConfiguration
                         UserId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.LoginProvider, t.ProviderKey, t.UserId })
-                .ForeignKey("membership.AspNetUsers", t => t.UserId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("membership.AspNetUserRoles", "UserId", "membership.AspNetUsers");
-            DropForeignKey("membership.AspNetUserLogins", "UserId", "membership.AspNetUsers");
-            DropForeignKey("membership.AspNetUserClaims", "UserId", "membership.AspNetUsers");
-            DropForeignKey("membership.AspNetUserRoles", "RoleId", "membership.AspNetRoles");
-            DropIndex("membership.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("membership.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("membership.AspNetUsers", "UserNameIndex");
-            DropIndex("membership.AspNetUserRoles", new[] { "RoleId" });
-            DropIndex("membership.AspNetUserRoles", new[] { "UserId" });
-            DropIndex("membership.AspNetRoles", "RoleNameIndex");
-            DropTable("membership.AspNetUserLogins");
-            DropTable("membership.AspNetUserClaims");
-            DropTable("membership.AspNetUsers");
-            DropTable("membership.AspNetUserRoles");
-            DropTable("membership.AspNetRoles");
+            DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
+            DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
+            DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
+            DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.AspNetUserClaims");
+            DropTable("dbo.AspNetUsers");
+            DropTable("dbo.AspNetUserRoles");
+            DropTable("dbo.AspNetRoles");
         }
     }
 }

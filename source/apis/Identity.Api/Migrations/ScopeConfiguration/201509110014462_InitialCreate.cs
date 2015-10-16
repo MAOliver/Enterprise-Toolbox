@@ -1,14 +1,13 @@
-namespace IdentityApi.Migrations.ScopeConfiguration
+using System.Data.Entity.Migrations;
+
+namespace Auth.Api.Migrations.ScopeConfiguration
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "scopes.Scopes",
+                "dbo.Scopes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -26,7 +25,7 @@ namespace IdentityApi.Migrations.ScopeConfiguration
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "scopes.ScopeClaims",
+                "dbo.ScopeClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -36,17 +35,17 @@ namespace IdentityApi.Migrations.ScopeConfiguration
                         Scope_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("scopes.Scopes", t => t.Scope_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Scopes", t => t.Scope_Id, cascadeDelete: true)
                 .Index(t => t.Scope_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("scopes.ScopeClaims", "Scope_Id", "scopes.Scopes");
-            DropIndex("scopes.ScopeClaims", new[] { "Scope_Id" });
-            DropTable("scopes.ScopeClaims");
-            DropTable("scopes.Scopes");
+            DropForeignKey("dbo.ScopeClaims", "Scope_Id", "dbo.Scopes");
+            DropIndex("dbo.ScopeClaims", new[] { "Scope_Id" });
+            DropTable("dbo.ScopeClaims");
+            DropTable("dbo.Scopes");
         }
     }
 }

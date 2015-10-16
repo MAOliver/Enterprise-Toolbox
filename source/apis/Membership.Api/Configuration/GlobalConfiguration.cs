@@ -8,7 +8,7 @@ namespace Membership.Api.Configuration
         public static Uri AuthorityUri => ConfigurationManager.AppSettings["authority.uri"].ToUri();
         public static Uri RedirectUri => ConfigurationManager.AppSettings["redirect.uri"].ToUri();
 
-        public static bool? IgnoreSsl => ConfigurationManager.AppSettings["ignoreSSL"].ToBool();
+        public static bool? IgnoreSsl => ConfigurationManager.AppSettings["dev.ignoreSSL"].ToBool();
 
         private static Uri ToUri(this string uriString)
         {

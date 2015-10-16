@@ -1,14 +1,13 @@
-namespace IdentityApi.Migrations.OperationalConfiguration
+using System.Data.Entity.Migrations;
+
+namespace Auth.Api.Migrations.OperationalConfiguration
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "operational.Consents",
+                "dbo.Consents",
                 c => new
                     {
                         Subject = c.String(nullable: false, maxLength: 200),
@@ -18,7 +17,7 @@ namespace IdentityApi.Migrations.OperationalConfiguration
                 .PrimaryKey(t => new { t.Subject, t.ClientId });
             
             CreateTable(
-                "operational.Tokens",
+                "dbo.Tokens",
                 c => new
                     {
                         Key = c.String(nullable: false, maxLength: 128),
@@ -34,8 +33,8 @@ namespace IdentityApi.Migrations.OperationalConfiguration
         
         public override void Down()
         {
-            DropTable("operational.Tokens");
-            DropTable("operational.Consents");
+            DropTable("dbo.Tokens");
+            DropTable("dbo.Consents");
         }
     }
 }

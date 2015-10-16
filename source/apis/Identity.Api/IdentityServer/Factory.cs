@@ -1,29 +1,32 @@
-﻿using Identity.Core;
-using Identity.Core.Services;
+﻿using Identity.Core.Extensions;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.EntityFramework;
 
-namespace IdentityApi.IdentityServer
+namespace Auth.Api.IdentityServer
 {
     internal class Factory
     {
-        public static IdentityServerServiceFactory Configure(string connString)
+        public static IdentityServerServiceFactory Configure(string idsrvConnection)
         {
             var factory = new IdentityServerServiceFactory();
 
             factory.RegisterConfigurationServices(new EntityFrameworkServiceOptions
             {
-                ConnectionString = connString,
-                Schema = "clients"
+                ConnectionString = idsrvConnection,
             });
             factory.RegisterOperationalServices(new EntityFrameworkServiceOptions
             {
-                ConnectionString = connString,
-                Schema = "operations"
+                ConnectionString = idsrvConnection,
+            });
+            factory.RegisterScopeStore(new EntityFrameworkServiceOptions
+            {
+                ConnectionString = idsrvConnection
             });
             factory.RegisterCors(true);
 
-            factory.ConfigureUserService(connString);
+            factory.ConfigureUserService(idsrvConnection);
+
+
 
             return factory;
         }

@@ -1,14 +1,13 @@
-namespace IdentityApi.Migrations.ClientConfiguration
+using System.Data.Entity.Migrations;
+
+namespace Auth.Api.Migrations.ClientConfiguration
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "clients.Clients",
+                "dbo.Clients",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -41,7 +40,7 @@ namespace IdentityApi.Migrations.ClientConfiguration
                 .Index(t => t.ClientId, unique: true);
             
             CreateTable(
-                "clients.ClientCorsOrigins",
+                "dbo.ClientCorsOrigins",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -49,11 +48,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientCustomGrantTypes",
+                "dbo.ClientCustomGrantTypes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -61,11 +60,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientScopes",
+                "dbo.ClientScopes",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -73,11 +72,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientClaims",
+                "dbo.ClientClaims",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -86,11 +85,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientSecrets",
+                "dbo.ClientSecrets",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -101,11 +100,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientIdPRestrictions",
+                "dbo.ClientIdPRestrictions",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -113,11 +112,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientPostLogoutRedirectUris",
+                "dbo.ClientPostLogoutRedirectUris",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -125,11 +124,11 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
             CreateTable(
-                "clients.ClientRedirectUris",
+                "dbo.ClientRedirectUris",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
@@ -137,39 +136,39 @@ namespace IdentityApi.Migrations.ClientConfiguration
                         Client_Id = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("clients.Clients", t => t.Client_Id, cascadeDelete: true)
+                .ForeignKey("dbo.Clients", t => t.Client_Id, cascadeDelete: true)
                 .Index(t => t.Client_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("clients.ClientRedirectUris", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientPostLogoutRedirectUris", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientIdPRestrictions", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientSecrets", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientClaims", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientScopes", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientCustomGrantTypes", "Client_Id", "clients.Clients");
-            DropForeignKey("clients.ClientCorsOrigins", "Client_Id", "clients.Clients");
-            DropIndex("clients.ClientRedirectUris", new[] { "Client_Id" });
-            DropIndex("clients.ClientPostLogoutRedirectUris", new[] { "Client_Id" });
-            DropIndex("clients.ClientIdPRestrictions", new[] { "Client_Id" });
-            DropIndex("clients.ClientSecrets", new[] { "Client_Id" });
-            DropIndex("clients.ClientClaims", new[] { "Client_Id" });
-            DropIndex("clients.ClientScopes", new[] { "Client_Id" });
-            DropIndex("clients.ClientCustomGrantTypes", new[] { "Client_Id" });
-            DropIndex("clients.ClientCorsOrigins", new[] { "Client_Id" });
-            DropIndex("clients.Clients", new[] { "ClientId" });
-            DropTable("clients.ClientRedirectUris");
-            DropTable("clients.ClientPostLogoutRedirectUris");
-            DropTable("clients.ClientIdPRestrictions");
-            DropTable("clients.ClientSecrets");
-            DropTable("clients.ClientClaims");
-            DropTable("clients.ClientScopes");
-            DropTable("clients.ClientCustomGrantTypes");
-            DropTable("clients.ClientCorsOrigins");
-            DropTable("clients.Clients");
+            DropForeignKey("dbo.ClientRedirectUris", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientPostLogoutRedirectUris", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientIdPRestrictions", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientSecrets", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientClaims", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientScopes", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientCustomGrantTypes", "Client_Id", "dbo.Clients");
+            DropForeignKey("dbo.ClientCorsOrigins", "Client_Id", "dbo.Clients");
+            DropIndex("dbo.ClientRedirectUris", new[] { "Client_Id" });
+            DropIndex("dbo.ClientPostLogoutRedirectUris", new[] { "Client_Id" });
+            DropIndex("dbo.ClientIdPRestrictions", new[] { "Client_Id" });
+            DropIndex("dbo.ClientSecrets", new[] { "Client_Id" });
+            DropIndex("dbo.ClientClaims", new[] { "Client_Id" });
+            DropIndex("dbo.ClientScopes", new[] { "Client_Id" });
+            DropIndex("dbo.ClientCustomGrantTypes", new[] { "Client_Id" });
+            DropIndex("dbo.ClientCorsOrigins", new[] { "Client_Id" });
+            DropIndex("dbo.Clients", new[] { "ClientId" });
+            DropTable("dbo.ClientRedirectUris");
+            DropTable("dbo.ClientPostLogoutRedirectUris");
+            DropTable("dbo.ClientIdPRestrictions");
+            DropTable("dbo.ClientSecrets");
+            DropTable("dbo.ClientClaims");
+            DropTable("dbo.ClientScopes");
+            DropTable("dbo.ClientCustomGrantTypes");
+            DropTable("dbo.ClientCorsOrigins");
+            DropTable("dbo.Clients");
         }
     }
 }

@@ -7,11 +7,11 @@ Enable-Migrations -MigrationsDirectory Migrations\ScopeConfiguration -ContextTyp
 Enable-Migrations -MigrationsDirectory Migrations\OperationalConfiguration -ContextTypeName OperationalDbContext -ContextAssemblyName IdentityServer3.EntityFramework -ConnectionStringName IdSvr3Config
 
 ## Adding
-Add-Migration -Name InitialCreate -ConfigurationTypeName IdentityApi.Migrations.ClientConfiguration.Configuration -ConnectionStringName IdSvr3Config
-Add-Migration -Name InitialCreate -ConfigurationTypeName IdentityApi.Migrations.ScopeConfiguration.Configuration -ConnectionStringName IdSvr3Config
-Add-Migration -Name InitialCreate -ConfigurationTypeName IdentityApi.Migrations.OperationalConfiguration.Configuration -ConnectionStringName IdSvr3Config
+Add-Migration -Name InitialCreate -ConfigurationTypeName Auth.Api.Migrations.ClientConfiguration.Configuration -ConnectionStringName IdSvr3Config
+Add-Migration -Name InitialCreate -ConfigurationTypeName Auth.Api.Migrations.ScopeConfiguration.Configuration -ConnectionStringName IdSvr3Config
+Add-Migration -Name InitialCreate -ConfigurationTypeName Auth.Api.Migrations.OperationalConfiguration.Configuration -ConnectionStringName IdSvr3Config
 
 ## Updating
-Update-Database -ConfigurationTypeName IdentityApi.Migrations.ClientConfiguration.Configuration -ConnectionStringName IdSvr3Config
-Update-Database -ConfigurationTypeName IdentityApi.Migrations.ScopeConfiguration.Configuration -ConnectionStringName IdSvr3Config
-Update-Database -ConfigurationTypeName IdentityApi.Migrations.OperationalConfiguration.Configuration -ConnectionStringName IdSvr3Config
+Update-Database -ConfigurationTypeName Auth.Api.Migrations.ClientConfiguration.Configuration -ConnectionStringName IdSvr3Config
+Update-Database -ConfigurationTypeName Auth.Api.Migrations.ScopeConfiguration.Configuration -ConnectionStringName IdSvr3Config
+Update-Database -ConfigurationTypeName Auth.Api.Migrations.OperationalConfiguration.Configuration -ConnectionStringName IdSvr3Config

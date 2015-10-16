@@ -1,10 +1,7 @@
-namespace IdentityApi.Migrations.OperationalConfiguration
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+using System.Data.Entity.Migrations;
 
+namespace Auth.Api.Migrations.OperationalConfiguration
+{
     internal sealed class Configuration : DbMigrationsConfiguration<IdentityServer3.EntityFramework.OperationalDbContext>
     {
         public Configuration()

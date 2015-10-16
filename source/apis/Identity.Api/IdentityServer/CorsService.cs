@@ -2,7 +2,7 @@
 using IdentityServer3.Core.Services;
 using IdentityServer3.Core.Services.Default;
 
-namespace IdentityApi.IdentityServer
+namespace Auth.Api.IdentityServer
 {
     public static class CorsService
     {
