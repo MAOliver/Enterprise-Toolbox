@@ -1,34 +1,31 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using IdentityServer3.Core.Models;
 using Xunit;
 using static Xunit.Assert;
 
 namespace Identity.Tests.xUnit
 {
-    public class CertificateTests
-    {
-        [Fact(DisplayName = "Should locate certficate")]
-        public void TestFindCertificateByThumbprints()
-        {
-            NotNull(TestCert.Load());
-        }
-
-        static class TestCert
-        {
-            public static X509Certificate2 Load()
-            {
-                return new X509Certificate2(@".\IISAuthCert.pfx", "11553322");
-            }
-            
-        }
-    }
-
     public class ClientTests
     {
-        [Fact(DisplayName = "Should add client")]
+        [Fact(DisplayName = "Should map client to EF Client")]
         public void TestAddClient()
         {
-           
-            
+
+            var entity = new Client()
+            {
+                ClientId = "test",
+                ClientName = "test2",
+                AllowedScopes = new List<string> {"item1", "item2"},
+                RedirectUris = new List<string> {"http://redirect1"},
+                AccessTokenType = AccessTokenType.Jwt,
+                Flow = Flows.ResourceOwner,
+                ClientSecrets = new List<Secret> {new Secret("secret")}
+
+                
+            }.ToEntity();
+
+            NotNull(entity);
         }
     }
 
