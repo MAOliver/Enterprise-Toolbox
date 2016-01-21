@@ -1,63 +1,120 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Core", "source\shared\Identity.Core\Identity.Core.csproj", "{C4CB4105-724F-4A85-9445-FF1C253E44BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Core", "source\auth\shared\Identity.Core\Identity.Core.csproj", "{C4CB4105-724F-4A85-9445-FF1C253E44BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Api", "source\apis\Membership.Api\Membership.Api.csproj", "{9886C037-C15F-4C6D-97A5-F98133FA3D3B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Membership.Api", "source\auth\apis\Membership.Api\Membership.Api.csproj", "{9886C037-C15F-4C6D-97A5-F98133FA3D3B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{5C1DD666-C8E5-4940-B4E2-B98D4E74B825}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deploy", "deploy", "{674B7900-0408-4476-82B6-F87FECF3C00B}"
-	ProjectSection(SolutionItems) = preProject
-		scripts\ps\addnewcert.ps1 = scripts\ps\addnewcert.ps1
-		scripts\ps\AddNewCertToLocal.ps1 = scripts\ps\AddNewCertToLocal.ps1
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosts", "Hosts", "{20BCCFA4-92F3-4EBF-90F6-691640697C62}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityAndMembership.SelfHost", "source\hosts\IdentityAndMembership.SelfHost\IdentityAndMembership.SelfHost.csproj", "{2A666210-08C0-48C2-BB17-6466134DAA02}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{674B7900-0408-4476-82B6-F87FECF3C00B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{04B8EC85-7860-440B-9096-AAA717D8EA1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Identity.Tests.xUnit", "source\tests\Identity.Tests.xUnit\Identity.Tests.xUnit.csproj", "{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Api", "source\auth\apis\Auth.Api\Auth.Api.csproj", "{216B1205-B627-470C-918C-6EFE4C6E2D76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Api", "source\apis\Auth.Api\Auth.Api.csproj", "{216B1205-B627-470C-918C-6EFE4C6E2D76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.SelfHost", "source\auth\hosts\Auth.SelfHost\Auth.SelfHost.csproj", "{2A666210-08C0-48C2-BB17-6466134DAA02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{6E58A0BA-81BC-4E48-8EDB-77EE86D2ABC7}"
+	ProjectSection(SolutionItems) = preProject
+		docs\auth\auth-admin.rst = docs\auth\auth-admin.rst
+		docs\auth\auth.rst = docs\auth\auth.rst
+		docs\auth\index.rst = docs\auth\index.rst
+		docs\auth\membership.rst = docs\auth\membership.rst
+		docs\auth\oauth.rst = docs\auth\oauth.rst
+		docs\auth\overview.rst = docs\auth\overview.rst
+		docs\auth\scopes.rst = docs\auth\scopes.rst
+		docs\auth\winad.rst = docs\auth\winad.rst
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{496BA3E9-55E1-44A3-A7A3-BCE39972593B}"
+	ProjectSection(SolutionItems) = preProject
+		build\scripts\auth\AuthInstall.LOCAL.sql = build\scripts\auth\AuthInstall.LOCAL.sql
+		build\scripts\auth\CreateDatabase.ps1 = build\scripts\auth\CreateDatabase.ps1
+		build\scripts\auth\New-SelfSignedCertificateEx.ps1 = build\scripts\auth\New-SelfSignedCertificateEx.ps1
+		build\scripts\auth\Setup.ps1 = build\scripts\auth\Setup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{5DE6ED7D-C953-4880-A646-5F89DDD19800}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Tests.xUnit", "source\auth\tests\Auth.Tests.xUnit\Auth.Tests.xUnit.csproj", "{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.Admin.Api", "source\auth\apis\Auth.Admin.Api\Auth.Admin.Api.csproj", "{70048117-ECD1-4378-AF53-14CE60EE0FCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsAuthentication.Api", "source\auth\apis\WindowsAuthentication.Api\WindowsAuthentication.Api.csproj", "{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "apis", "apis", "{833E2880-2F5B-491F-A3AC-8C55A7EE8536}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth.WebHost", "source\auth\hosts\Auth.WebHost\Auth.WebHost.csproj", "{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{2ED1ED82-0125-4C58-AB10-B69926C7E7AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		AzureWebSites|Any CPU = AzureWebSites|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4CB4105-724F-4A85-9445-FF1C253E44BD}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{C4CB4105-724F-4A85-9445-FF1C253E44BD}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{C4CB4105-724F-4A85-9445-FF1C253E44BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4CB4105-724F-4A85-9445-FF1C253E44BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4CB4105-724F-4A85-9445-FF1C253E44BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4CB4105-724F-4A85-9445-FF1C253E44BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9886C037-C15F-4C6D-97A5-F98133FA3D3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A666210-08C0-48C2-BB17-6466134DAA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A666210-08C0-48C2-BB17-6466134DAA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A666210-08C0-48C2-BB17-6466134DAA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A666210-08C0-48C2-BB17-6466134DAA02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{216B1205-B627-470C-918C-6EFE4C6E2D76}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{216B1205-B627-470C-918C-6EFE4C6E2D76}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
 		{216B1205-B627-470C-918C-6EFE4C6E2D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{216B1205-B627-470C-918C-6EFE4C6E2D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{216B1205-B627-470C-918C-6EFE4C6E2D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{216B1205-B627-470C-918C-6EFE4C6E2D76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A666210-08C0-48C2-BB17-6466134DAA02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}.AzureWebSites|Any CPU.ActiveCfg = Release|Any CPU
+		{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}.AzureWebSites|Any CPU.Build.0 = Release|Any CPU
+		{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE4F2DC6-639E-44F9-8746-4D61353BB8F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C4CB4105-724F-4A85-9445-FF1C253E44BD} = {5C1DD666-C8E5-4940-B4E2-B98D4E74B825}
-		{2A666210-08C0-48C2-BB17-6466134DAA02} = {20BCCFA4-92F3-4EBF-90F6-691640697C62}
+		{C4CB4105-724F-4A85-9445-FF1C253E44BD} = {5DE6ED7D-C953-4880-A646-5F89DDD19800}
+		{9886C037-C15F-4C6D-97A5-F98133FA3D3B} = {833E2880-2F5B-491F-A3AC-8C55A7EE8536}
+		{216B1205-B627-470C-918C-6EFE4C6E2D76} = {833E2880-2F5B-491F-A3AC-8C55A7EE8536}
+		{496BA3E9-55E1-44A3-A7A3-BCE39972593B} = {674B7900-0408-4476-82B6-F87FECF3C00B}
 		{5CE1BBF2-3A63-458F-AF78-9AF33F12F1AF} = {04B8EC85-7860-440B-9096-AAA717D8EA1F}
+		{70048117-ECD1-4378-AF53-14CE60EE0FCE} = {833E2880-2F5B-491F-A3AC-8C55A7EE8536}
+		{1DA5DE12-C9BD-4700-8BBF-DBAEC6D5A853} = {833E2880-2F5B-491F-A3AC-8C55A7EE8536}
 	EndGlobalSection
 EndGlobal

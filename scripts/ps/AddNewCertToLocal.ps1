@@ -1,1 +1,0 @@
-New-SelfsignedCertificateEx -Subject "CN=localhost" -EKU "Server Authentication","Client authentication" -KeyUsage "KeyEncipherment, DigitalSignature" -SAN "localhost" -AllowSMIME -Exportable -StoreLocation "LocalMachine" -IsCA $true 

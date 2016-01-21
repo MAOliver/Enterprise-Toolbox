@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Auth.Owin.ResourceAuthorization</id>
+        <version>0.0.5.3</version>
+        <title>Auth.Owin.ResourceAuthorization</title>
+        <authors>Fidelity National Financial - WBLS</authors>
+        <owners>matthewaustinoliver@gmail.com</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Middleware to support resource authorization using Owin</description>
+        <releaseNotes>- Updated appbuilder extensions namespace</releaseNotes>
+        <copyright>Copyright © FNF 2015</copyright>
+        <language>en</language>
+        <tags>auth oauth2 owin resource claims authorization</tags>
+        <dependencies>
+            <dependency id="Microsoft.AspNet.WebApi.Client" version="5.2.3" />
+            <dependency id="Microsoft.AspNet.WebApi.Core" version="5.2.3" />
+            <dependency id="Microsoft.AspNet.WebApi.Owin" version="5.2.3" />
+            <dependency id="Microsoft.Owin" version="3.0.1" />
+            <dependency id="Newtonsoft.Json" version="7.0.1" />
+            <dependency id="Owin" version="1.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Debug\Auth.Owin.ResourceAuthorization.dll" target="lib\net45\Auth.Owin.ResourceAuthorization.dll" />
+    </files>
+</package>
